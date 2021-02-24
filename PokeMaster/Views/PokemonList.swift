@@ -12,12 +12,16 @@ import UIKit
 struct PokemonList: View {
     
     @State var expandingIndex: Int?
-    
+    @State var searchText: String = ""
     var body: some View {
         
         if #available(iOS 14.0, *) {
             ScrollView {
                 LazyVStack(content: {
+                    
+                    TextField("搜索", text: $searchText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
                     ForEach(PokemonViewModel.all) { pokemon in
                         
                         PokemonInfoRow(
@@ -33,13 +37,14 @@ struct PokemonList: View {
                         }
                     }
                 })
-            }.overlay(
-                VStack{
-                    Spacer()
-                    PokemonInfoPanel(model: .sample(id: expandingIndex ?? 1))
-                        
-                }.edgesIgnoringSafeArea(.bottom)
-            )
+            }
+//            .overlay(
+//                VStack{
+//                    Spacer()
+//                    PokemonInfoPanel(model: .sample(id: expandingIndex ?? 1))
+//                        
+//                }.edgesIgnoringSafeArea(.bottom)
+//            )
         } else {
             List(PokemonViewModel.all){ pokemon in
                 PokemonInfoRow(
