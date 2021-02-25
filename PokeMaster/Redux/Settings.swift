@@ -8,7 +8,7 @@
 
 import Combine
 
-
+/*
 class Settings: ObservableObject {
     enum AccountBehavior: CaseIterable {
         case register, login
@@ -40,14 +40,15 @@ extension Settings.Sorting {
     }
 }
 
-extension Settings.AccountBehavior {
-    var text: String {
-        switch self {
-        case .register:
-            return "注册"
-        case .login:
-            return "登录"
-        }
-    }
-    
-}
+ 
+ extension Settings.AccountBehavior {
+     var text: String {
+         switch self {
+         case .register:
+             return "注册"
+         case .login:
+             return "登录"
+         }
+     }
+ }
+*/
