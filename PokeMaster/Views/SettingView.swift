@@ -37,7 +37,7 @@ struct SettingView: View {
         Section(header: Text("账号")) {
             if settings.loginUser == nil {
                 Picker(
-                    selection: settingBinding.accountBehavior,
+                    selection: settingBinding.checker.accountBehavior,
                     label: Text("")
                 ) {
                     ForEach(AppState.Settings.AccountBehavior.allCases, id: \.self) {
@@ -46,21 +46,22 @@ struct SettingView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                TextField("电子邮箱", text: settingBinding.email)
-                SecureField("密码", text: settingBinding.password)
-                if settings.accountBehavior == .register {
-                    SecureField("确认密码", text: settingBinding.verifyPassword)
+                TextField("电子邮箱", text: settingBinding.checker.email)
+                    .foregroundColor(settings.isEmailValid ? .green : .red)
+                SecureField("密码", text: settingBinding.checker.password)
+                if settings.checker.accountBehavior == .register {
+                    SecureField("确认密码", text: settingBinding.checker.verifyPassword)
                 }
                 
                 if settings.loginRequesting {
 //                    Text("登录中。。。。。")
                     LoadingIndicatorView()
                 }else {
-                    Button(settings.accountBehavior.text) {
+                    Button(settings.checker.accountBehavior.text) {
                         self.store.dispatch(
                             .login(
-                                email: self.settings.email,
-                                password: self.settings.password
+                                email: self.settings.checker.email,
+                                password: self.settings.checker.password
                             )
                         )
                     }

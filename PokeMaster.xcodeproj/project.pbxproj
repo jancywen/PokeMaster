@@ -101,6 +101,8 @@
 		E42F487B25E647C40025F8D5 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F487A25E647C40025F8D5 /* FileStorage.swift */; };
 		E42F487E25E64E590025F8D5 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F487D25E64E590025F8D5 /* LoadingIndicatorView.swift */; };
 		E42F488125E6551C0025F8D5 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F488025E6551C0025F8D5 /* UserDefaultsStorage.swift */; };
+		E42F488425E77B450025F8D5 /* EmailCheckingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F488325E77B450025F8D5 /* EmailCheckingRequest.swift */; };
+		E42F488725E78A850025F8D5 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42F488625E78A850025F8D5 /* CancelBag.swift */; };
 		E44E320425E4D60600961F87 /* PokemonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E320325E4D60600961F87 /* PokemonList.swift */; };
 		E44E320A25E4FAD300961F87 /* PokemonInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E320925E4FAD200961F87 /* PokemonInfoPanel.swift */; };
 		E4DC901625E50BC400B0CFBE /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DC901525E50BC400B0CFBE /* BlurView.swift */; };
@@ -203,6 +205,8 @@
 		E42F487A25E647C40025F8D5 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		E42F487D25E64E590025F8D5 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		E42F488025E6551C0025F8D5 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		E42F488325E77B450025F8D5 /* EmailCheckingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckingRequest.swift; sourceTree = "<group>"; };
+		E42F488625E78A850025F8D5 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		E44E320325E4D60600961F87 /* PokemonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonList.swift; sourceTree = "<group>"; };
 		E44E320925E4FAD200961F87 /* PokemonInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoPanel.swift; sourceTree = "<group>"; };
 		E4DC901525E50BC400B0CFBE /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -439,6 +443,7 @@
 				E42F486625E6252E0025F8D5 /* Store.swift */,
 				E42F486C25E62E840025F8D5 /* AppAction.swift */,
 				E42F487625E637BE0025F8D5 /* AppCommand.swift */,
+				E42F488625E78A850025F8D5 /* CancelBag.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				E42F487025E635540025F8D5 /* LoginRequest.swift */,
+				E42F488325E77B450025F8D5 /* EmailCheckingRequest.swift */,
 				E42F487325E637030025F8D5 /* AppError.swift */,
 			);
 			path = Request;
@@ -587,6 +593,7 @@
 			files = (
 				E42F488125E6551C0025F8D5 /* UserDefaultsStorage.swift in Sources */,
 				E42F487125E635540025F8D5 /* LoginRequest.swift in Sources */,
+				E42F488425E77B450025F8D5 /* EmailCheckingRequest.swift in Sources */,
 				D1320B1F23178614006F02A6 /* AppDelegate.swift in Sources */,
 				E42F485925E5FC350025F8D5 /* SettingRootView.swift in Sources */,
 				D1320B1C23178614006F02A6 /* Ability.swift in Sources */,
@@ -600,6 +607,7 @@
 				E42F487B25E647C40025F8D5 /* FileStorage.swift in Sources */,
 				E42F487725E637BE0025F8D5 /* AppCommand.swift in Sources */,
 				D1320AD723178614006F02A6 /* Sample.swift in Sources */,
+				E42F488725E78A850025F8D5 /* CancelBag.swift in Sources */,
 				D1320B1923178614006F02A6 /* AbilityViewModel.swift in Sources */,
 				E42F485F25E61C2E0025F8D5 /* MainTab.swift in Sources */,
 				E42F486D25E62E840025F8D5 /* AppAction.swift in Sources */,

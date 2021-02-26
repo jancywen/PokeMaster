@@ -10,7 +10,21 @@ import Foundation
 import Combine
 
 class Store: ObservableObject {
+    
+    var cancelBag = CancelBag()
+    
     @Published var appState = AppState()
+    
+    init() {
+        setupObservers()
+    }
+    private func setupObservers() {
+        appState.settings.checker.isEmailValid.sink { isValid in
+            self.dispatch(
+                .emailValid(valid: isValid)
+            )
+        }.cancel(by: cancelBag)
+    }
     
     
     func dispatch(_ action: AppAction) {
@@ -29,7 +43,8 @@ class Store: ObservableObject {
         }
     }
     
-    
+}
+extension Store {
     static func reduce(state: AppState, action: AppAction) -> (AppState, AppCommand?) {
         var appState = state
         var appCommand: AppCommand?
@@ -55,6 +70,9 @@ class Store: ObservableObject {
             
         case .logout:
             appState.settings.loginUser = nil
+            
+        case .emailValid(valid: let isValid):
+            appState.settings.isEmailValid = isValid
         }
         
         return (appState, appCommand)

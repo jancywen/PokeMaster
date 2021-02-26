@@ -10,7 +10,11 @@ import Foundation
 
 
 enum AppAction {
+    /// 登录
     case login(email: String, password: String)
     case accountBehaviorDone(result: Result<User, AppError>)
+    /// 注销
     case logout
+    /// 验证邮箱
+    case emailValid(valid: Bool)
 }
