@@ -10,6 +10,7 @@ import Foundation
 
 enum AppError: Error, Identifiable {
     case passwordWrong
+    case networkingFailed(Error)
     
     var id: String {localizedDescription}
 }
@@ -19,6 +20,8 @@ extension AppError: LocalizedError {
         switch self {
         case .passwordWrong:
             return "密码错误"
+        case .networkingFailed(let error):
+            return error.localizedDescription
         }
     }
 }

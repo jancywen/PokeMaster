@@ -73,6 +73,21 @@ extension Store {
             
         case .emailValid(valid: let isValid):
             appState.settings.isEmailValid = isValid
+            
+        case .loadPokemons:
+            if appState.pokemonList.loadingPokemons {
+                break
+            }
+            appState.pokemonList.loadingPokemons = true
+            appCommand = LoadPokemonCommand()
+            
+        case .loadPokemonsDone(result: let result):
+            switch result {
+            case .success(let models):
+                appState.pokemonList.pokemons = Dictionary( uniqueKeysWithValues: models.map{($0.id, $0)})
+            case .failure(let error):
+                print(error)
+            }
         }
         
         return (appState, appCommand)

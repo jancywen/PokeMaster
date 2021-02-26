@@ -8,11 +8,15 @@
 
 import SwiftUI
 import UIKit
+import Combine
 
-struct PokemonList: View {
+struct PokemonListView: View {
     
     @State var expandingIndex: Int?
     @State var searchText: String = ""
+    
+    @EnvironmentObject var store: Store
+    
     var body: some View {
         
         if #available(iOS 14.0, *) {
@@ -22,7 +26,7 @@ struct PokemonList: View {
                     TextField("搜索", text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
-                    ForEach(PokemonViewModel.all) { pokemon in
+                    ForEach(store.appState.pokemonList.allPokemonsByID) { pokemon in
                         
                         PokemonInfoRow(
                             model: pokemon,
@@ -81,6 +85,6 @@ struct ListRemoveSeparator: ViewModifier {
 
 struct PokemonList_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonList()
+        PokemonListView()
     }
 }
