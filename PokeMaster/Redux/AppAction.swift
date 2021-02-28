@@ -17,6 +17,8 @@ enum AppAction {
     case logout
     /// 验证邮箱
     case emailValid(valid: Bool)
+    /// btnenable
+    case enableBtn(enable: Bool)
     
     case loadPokemons
     case loadPokemonsDone(result: Result<[PokemonViewModel], AppError>)

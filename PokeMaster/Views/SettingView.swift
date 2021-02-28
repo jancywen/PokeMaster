@@ -65,6 +65,8 @@ struct SettingView: View {
                             )
                         )
                     }
+                    .foregroundColor(settings.isOperatable ? .blue : .gray)
+                    .disabled(!settings.isOperatable)
                 }
             }else {
                 Text(settings.loginUser!.email)

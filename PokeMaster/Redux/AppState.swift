@@ -43,6 +43,7 @@ extension AppState {
             @Published var password = ""
             @Published var verifyPassword = ""
             
+            ///验证邮箱
             var isEmailValid: AnyPublisher<Bool, Never> {
                 let remoteVerify = $email
                     .debounce(
@@ -76,11 +77,35 @@ extension AppState {
                 .map { $0 && ($1 || $2)}
                 .eraseToAnyPublisher()
             }
+            
+            // 验证密码
+            var isPasswordValid: AnyPublisher<Bool, Never> {
+                
+                return Publishers.CombineLatest3 (
+                    $accountBehavior.map{ $0 == .login}, $password, $verifyPassword
+                ).map { skip, pw, vpw in
+                    if skip {
+                        return !pw.isEmpty
+                    }else {
+                        return !pw.isEmpty && !vpw.isEmpty && pw == vpw
+                    }
+                }.eraseToAnyPublisher()
+            }
+            
+            /// 按钮可点击
+            var isBtnEnable: AnyPublisher<Bool, Never> {
+                return Publishers
+                    .CombineLatest(isEmailValid, isPasswordValid)
+                    .map{ $0 && $1 }
+                    .eraseToAnyPublisher()
+            }
         }
         
         var checker = AccountChecker()
         
         var isEmailValid: Bool = false
+        
+        var isOperatable: Bool = false
         
         @UserDefaultsStorage<Bool>(initialValue: true, keypath: "showEnglishName")
         var showEnglishName: Bool

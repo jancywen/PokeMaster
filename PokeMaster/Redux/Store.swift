@@ -24,6 +24,10 @@ class Store: ObservableObject {
                 .emailValid(valid: isValid)
             )
         }.cancel(by: cancelBag)
+        
+        appState.settings.checker.isBtnEnable.sink { enable in
+            self.dispatch(.enableBtn(enable: enable))
+        }.cancel(by: cancelBag)
     }
     
     
@@ -88,6 +92,10 @@ extension Store {
             case .failure(let error):
                 print(error)
             }
+            
+        case .enableBtn(enable: let enable):
+            appState.settings.isOperatable = enable
+        
         }
         
         return (appState, appCommand)
