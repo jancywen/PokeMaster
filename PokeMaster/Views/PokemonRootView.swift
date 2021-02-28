@@ -15,13 +15,25 @@ struct PokemonRootView: View {
     var body: some View {
         NavigationView {
             
-            if store.appState.pokemonList.pokemons == nil {
-                Text("Loading....").onAppear(
-                    perform: { self.store.dispatch(.loadPokemons) }
-                )
+            
+            
+            if store.appState.pokemonList.loadingPokemonsError == nil {
+                if store.appState.pokemonList.pokemons == nil {
+                    Text("Loading....").onAppear(
+                        perform: { self.store.dispatch(.loadPokemons) }
+                    )
+                }else {
+                    PokemonListView().navigationBarTitle("Pokemon")
+                }
             }else {
-                PokemonListView().navigationBarTitle("Pokemon")
+                Button {
+                    store.appState.pokemonList.loadingPokemonsError = nil
+                } label: {
+                    Image(systemName: "arrow.clockwise")
+                    Text("Retry")
+                }
             }
+            
         }
     }
 }

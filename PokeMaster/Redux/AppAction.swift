@@ -24,6 +24,10 @@ enum AppAction {
     /// btnenable
     case enableBtn(enable: Bool)
     
+    /// 加载 Pokemons
     case loadPokemons
     case loadPokemonsDone(result: Result<[PokemonViewModel], AppError>)
+    
+    /// 清空缓存
+    case clearCache
 }

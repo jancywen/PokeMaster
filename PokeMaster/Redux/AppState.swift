@@ -130,8 +130,10 @@ extension AppState {
     }
     
     struct PokemonList {
+        @FileStorage(directory: .documentDirectory, fileName: "pokemon.json")
         var pokemons: [Int: PokemonViewModel]?
         var loadingPokemons = false
+        var loadingPokemonsError: AppError?
         
         var allPokemonsByID: [PokemonViewModel] {
             guard let pokemons = pokemons?.values else {

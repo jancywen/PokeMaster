@@ -107,11 +107,18 @@ extension Store {
                 appState.pokemonList.pokemons = Dictionary( uniqueKeysWithValues: models.map{($0.id, $0)})
             case .failure(let error):
                 print(error)
+                appState.pokemonList.loadingPokemonsError = error
             }
             
         case .enableBtn(enable: let enable):
             appState.settings.isOperatable = enable
         
+        case .clearCache:
+//            appState.pokemonList.pokemons = nil
+            try? FileHelper.delete(
+                from: .documentDirectory,
+                fileName: "pokemon.json"
+            )
         }
         
         return (appState, appCommand)

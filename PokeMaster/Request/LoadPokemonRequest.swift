@@ -45,7 +45,7 @@ struct LoadPokemonRequest {
     }
     
     static var all: AnyPublisher<[PokemonViewModel], AppError> {
-        (1...50).map{
+        (1...20).map{
             LoadPokemonRequest(id: $0).publisher
         }.zipAll
     }
