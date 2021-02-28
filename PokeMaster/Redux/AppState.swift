@@ -24,6 +24,9 @@ extension AppState {
         var loginRequesting: Bool = false
         var loginError: AppError?
         
+        var registerRequesting: Bool = false
+        var registerError: AppError?
+        
         enum AccountBehavior: CaseIterable {
             case register, login
         }

@@ -67,5 +67,23 @@ struct LoadPokemonCommand: AppCommand {
         })
     }
     
+}
+
+
+struct RegisterCommand: AppCommand {
+    let email: String
+    let password: String
     
+    func execute(in store: Store) {
+        _ = RegisterRequest(email: email, password: password)
+            .publisher
+            .subscribe(on: RunLoop.main)
+            .sink(receiveCompletion: { complet in
+                if case .failure(let error) = complet {
+                    store.dispatch(.accountRegisterDone(result: .failure(error)))
+                }
+            }, receiveValue: { _ in
+                store.dispatch(.accountRegisterDone(result: .success(email)))
+            })
+    }
 }

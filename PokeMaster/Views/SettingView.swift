@@ -53,17 +53,27 @@ struct SettingView: View {
                     SecureField("确认密码", text: settingBinding.checker.verifyPassword)
                 }
                 
-                if settings.loginRequesting {
+                if settings.loginRequesting || settings.registerRequesting {
 //                    Text("登录中。。。。。")
                     LoadingIndicatorView()
                 }else {
                     Button(settings.checker.accountBehavior.text) {
-                        self.store.dispatch(
-                            .login(
-                                email: self.settings.checker.email,
-                                password: self.settings.checker.password
+                        if settings.checker.accountBehavior == .login {
+                            self.store.dispatch(
+                                .login(
+                                    email: self.settings.checker.email,
+                                    password: self.settings.checker.password
+                                )
                             )
-                        )
+                        }
+                        else {
+                            self.store.dispatch(
+                                .register(
+                                    email: self.settings.checker.email,
+                                    password: self.settings.checker.password
+                                )
+                            )
+                        }
                     }
                     .foregroundColor(settings.isOperatable ? .blue : .gray)
                     .disabled(!settings.isOperatable)
@@ -85,7 +95,7 @@ struct SettingView: View {
             Picker(selection: settingBinding.sorting, label: Text("排序方式"), content: {
                 ForEach(AppState.Settings.Sorting.allCases, id: \.self) {
                     Text($0.text).tag($0)
-//                    Text($0.rawValue)
+                    //                    Text($0.rawValue)
                 }
             })
             Toggle("只显示收藏", isOn: settingBinding.showFavoriteOnly)

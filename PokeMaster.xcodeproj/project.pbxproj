@@ -107,6 +107,7 @@
 		E44E320425E4D60600961F87 /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E320325E4D60600961F87 /* PokemonListView.swift */; };
 		E44E320A25E4FAD300961F87 /* PokemonInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44E320925E4FAD200961F87 /* PokemonInfoPanel.swift */; };
 		E4DC901625E50BC400B0CFBE /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DC901525E50BC400B0CFBE /* BlurView.swift */; };
+		E830EA4025EB6D100020A9B8 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E830EA3F25EB6D100020A9B8 /* RegisterRequest.swift */; };
 		E8F236B825EB506C009DBA76 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E8F236B725EB506C009DBA76 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +214,7 @@
 		E44E320325E4D60600961F87 /* PokemonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListView.swift; sourceTree = "<group>"; };
 		E44E320925E4FAD200961F87 /* PokemonInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoPanel.swift; sourceTree = "<group>"; };
 		E4DC901525E50BC400B0CFBE /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		E830EA3F25EB6D100020A9B8 /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				E42F487025E635540025F8D5 /* LoginRequest.swift */,
+				E830EA3F25EB6D100020A9B8 /* RegisterRequest.swift */,
 				E42F488325E77B450025F8D5 /* EmailCheckingRequest.swift */,
 				E42F488A25E8E4E10025F8D5 /* LoadPokemonRequest.swift */,
 				E42F487325E637030025F8D5 /* AppError.swift */,
@@ -604,6 +607,7 @@
 			files = (
 				E42F488125E6551C0025F8D5 /* UserDefaultsStorage.swift in Sources */,
 				E42F487125E635540025F8D5 /* LoginRequest.swift in Sources */,
+				E830EA4025EB6D100020A9B8 /* RegisterRequest.swift in Sources */,
 				E42F488425E77B450025F8D5 /* EmailCheckingRequest.swift in Sources */,
 				D1320B1F23178614006F02A6 /* AppDelegate.swift in Sources */,
 				E42F485925E5FC350025F8D5 /* SettingRootView.swift in Sources */,

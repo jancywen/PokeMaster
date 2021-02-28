@@ -72,6 +72,22 @@ extension Store {
             }
             appState.settings.loginRequesting = false
             
+        case .register(email: let email, password: let password):
+            guard !appState.settings.registerRequesting else {
+                break
+            }
+            appState.settings.registerRequesting = true
+            appCommand = RegisterCommand(email: email, password: password)
+            
+        case .accountRegisterDone(result: let result):
+            switch result {
+            case .success(_):
+                appState.settings.checker.accountBehavior = .login
+            case .failure(let error):
+                print("register Error: \(error)")
+                appState.settings.registerError = error
+            }
+            appState.settings.registerRequesting = false
         case .logout:
             appState.settings.loginUser = nil
             

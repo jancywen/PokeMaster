@@ -13,6 +13,10 @@ enum AppAction {
     /// 登录
     case login(email: String, password: String)
     case accountBehaviorDone(result: Result<User, AppError>)
+    /// 注册
+    case register(email: String, password: String)
+    case accountRegisterDone(result: Result<String, AppError>)
+    
     /// 注销
     case logout
     /// 验证邮箱
