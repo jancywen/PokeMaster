@@ -12,8 +12,6 @@ import Combine
 
 struct PokemonListView: View {
     
-    @State var expandingIndex: Int?
-    @State var searchText: String = ""
     
     @EnvironmentObject var store: Store
     
@@ -23,20 +21,21 @@ struct PokemonListView: View {
             ScrollView {
                 LazyVStack(content: {
                     
-                    TextField("搜索", text: $searchText)
+                    TextField("搜索", text: $store.appState.pokemonList.searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
+                    
                     ForEach(store.appState.pokemonList.allPokemonsByID) { pokemon in
                         
                         PokemonInfoRow(
                             model: pokemon,
-                            expanded: self.expandingIndex == pokemon.id
+                            expanded: store.appState.pokemonList.expandingIndex == pokemon.id
                         )
                         .onTapGesture{
-                            if self.expandingIndex == pokemon.id {
-                                self.expandingIndex = nil
+                            if store.appState.pokemonList.expandingIndex == pokemon.id {
+                                store.appState.pokemonList.expandingIndex = nil
                             }else {
-                                self.expandingIndex = pokemon.id
+                                store.appState.pokemonList.expandingIndex = pokemon.id
                             }
                         }
                     }
@@ -53,13 +52,17 @@ struct PokemonListView: View {
             List(PokemonViewModel.all){ pokemon in
                 PokemonInfoRow(
                     model: pokemon,
-                    expanded: self.expandingIndex == pokemon.id
+                    expanded: store.appState.pokemonList.expandingIndex == pokemon.id
                 )
                 .onTapGesture{
-                    if self.expandingIndex == pokemon.id {
-                        self.expandingIndex = nil
+                    if store.appState.pokemonList.expandingIndex == pokemon.id {
+                        store.dispatch(
+                            .toggleListSelection(index: nil)
+                        )
                     }else {
-                        self.expandingIndex = pokemon.id
+                        store.dispatch(
+                            .toggleListSelection(index: pokemon.id)
+                        )
                     }
                 }
             }.modifier(ListRemoveSeparator())

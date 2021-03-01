@@ -119,6 +119,9 @@ extension Store {
                 from: .documentDirectory,
                 fileName: "pokemon.json"
             )
+            
+        case .toggleListSelection(index: let index):
+            appState.pokemonList.expandingIndex = index
         }
         
         return (appState, appCommand)

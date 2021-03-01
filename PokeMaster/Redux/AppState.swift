@@ -132,14 +132,28 @@ extension AppState {
     struct PokemonList {
         @FileStorage(directory: .documentDirectory, fileName: "pokemon.json")
         var pokemons: [Int: PokemonViewModel]?
+        
         var loadingPokemons = false
         var loadingPokemonsError: AppError?
+        
+        var expandingIndex:Int? = nil
+        var searchText = ""
         
         var allPokemonsByID: [PokemonViewModel] {
             guard let pokemons = pokemons?.values else {
                 return []
             }
             return pokemons.sorted{$0.id < $1.id}
+        }
+        
+        // 按ID缓存所有 AbilityViewModel
+        var abilities: [Int: AbilityViewModel]?
+        // 返回某个 pokemon 的所有技能的 AbilityViewModel
+        func abilityViewModel(
+            for pokemon: Pokemon
+        ) -> [AbilityViewModel]? {
+            
+            return []
         }
     }
 }

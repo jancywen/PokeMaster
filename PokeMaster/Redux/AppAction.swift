@@ -30,4 +30,7 @@ enum AppAction {
     
     /// 清空缓存
     case clearCache
+    
+    /// 切换 cell 展开状态
+    case toggleListSelection(index: Int?)
 }
