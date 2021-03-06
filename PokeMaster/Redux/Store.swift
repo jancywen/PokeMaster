@@ -122,6 +122,22 @@ extension Store {
             
         case .toggleListSelection(index: let index):
             appState.pokemonList.expandingIndex = index
+            
+        case .loadAbilities(pokemon: let pokemon):
+            if appState.pokemonList.loadingAbilitys {
+                break
+            }
+            appState.pokemonList.loadingAbilitys = true
+            appCommand = LoadAbilityCommand(pokemon: pokemon)
+
+        case .loadAbilitiesDone(result: let result):
+            switch result {
+            case .success(let abilities):
+//                appState.pokemonList.abilities?.merge(abilities){ (current, _) in current }
+            break 
+            case .failure(let error):
+                print(error.errorDescription)
+            }
         }
         
         return (appState, appCommand)

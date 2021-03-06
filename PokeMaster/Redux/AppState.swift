@@ -136,6 +136,7 @@ extension AppState {
         var loadingPokemons = false
         var loadingPokemonsError: AppError?
         
+        /// 展开cell的index
         var expandingIndex:Int? = nil
         var searchText = ""
         
@@ -146,6 +147,7 @@ extension AppState {
             return pokemons.sorted{$0.id < $1.id}
         }
         
+        var loadingAbilitys = false
         // 按ID缓存所有 AbilityViewModel
         var abilities: [Int: AbilityViewModel]?
         // 返回某个 pokemon 的所有技能的 AbilityViewModel

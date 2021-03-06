@@ -87,3 +87,23 @@ struct RegisterCommand: AppCommand {
             })
     }
 }
+
+
+struct LoadAbilityCommand: AppCommand {
+    let pokemon: Pokemon
+    
+    func execute(in store: Store) {
+        _ = LoadAbilityRequest(pokemon: pokemon)
+            .publisher
+            .subscribe(on: RunLoop.main)
+            .sink { complet in
+                if case .failure(let error) = complet {
+                    store.dispatch(.loadAbilitiesDone(result: .failure(error)))
+                }
+            } receiveValue: { abilities in
+                store.dispatch(.loadAbilitiesDone(result: .success(abilities)))
+            }
+        
+    }
+    
+}
