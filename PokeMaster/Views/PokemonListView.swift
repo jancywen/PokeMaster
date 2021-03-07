@@ -32,11 +32,14 @@ struct PokemonListView: View {
                             expanded: store.appState.pokemonList.expandingIndex == pokemon.id
                         )
                         .onTapGesture{
-                            if store.appState.pokemonList.expandingIndex == pokemon.id {
-                                store.appState.pokemonList.expandingIndex = nil
-                            }else {
-                                store.appState.pokemonList.expandingIndex = pokemon.id
-                            }
+                            
+                            store.dispatch(
+                                .toggleListSelection(index: pokemon.id)
+                            )
+                            
+                            store.dispatch(
+                                .loadAbilities(pokemon: pokemon.pokemon)
+                            )
                         }
                     }
                 })

@@ -19,6 +19,7 @@ struct LoadAbilityRequest {
             .decode(type: Ability.self, decoder: appDecoder)
             .map{ AbilityViewModel(ability: $0) }
             .mapError{ AppError.networkingFailed($0)}
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 

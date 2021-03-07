@@ -9,10 +9,14 @@
 import SwiftUI
 
 struct PokemonInfoPanel: View {
+    
+    @EnvironmentObject var store: Store
+
     let model: PokemonViewModel
     
     var abilities: [AbilityViewModel] {
-        AbilityViewModel.sample(pokemonID: model.id)
+//        AbilityViewModel.sample(pokemonID: model.id)
+        store.appState.pokemonList.abilityViewModel(for: model.pokemon) ?? []
     }
     
     

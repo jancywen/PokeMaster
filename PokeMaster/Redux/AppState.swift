@@ -154,8 +154,7 @@ extension AppState {
         func abilityViewModel(
             for pokemon: Pokemon
         ) -> [AbilityViewModel]? {
-            
-            return []
+            return pokemon.abilities.map{$0.ability.url.extractedID}.filter{$0 != nil}.map{ abilities?[$0!] }.filter{$0 != nil}.map{$0!}
         }
     }
 }

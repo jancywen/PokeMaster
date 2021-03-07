@@ -121,8 +121,11 @@ extension Store {
             )
             
         case .toggleListSelection(index: let index):
-            appState.pokemonList.expandingIndex = index
-            
+            appState.pokemonList.expandingIndex =
+                appState.pokemonList.expandingIndex == index
+                ? nil
+                : index
+
         case .loadAbilities(pokemon: let pokemon):
             if appState.pokemonList.loadingAbilitys {
                 break
@@ -133,8 +136,14 @@ extension Store {
         case .loadAbilitiesDone(result: let result):
             switch result {
             case .success(let abilities):
-//                appState.pokemonList.abilities?.merge(abilities){ (current, _) in current }
-            break 
+                if appState.pokemonList.abilities == nil {
+                    appState.pokemonList.abilities = [Int : AbilityViewModel]()
+                }
+                for ability in abilities {
+                    if !appState.pokemonList.abilities!.contains(where: {ability.id == $0.key}) {
+                        appState.pokemonList.abilities?.updateValue(ability, forKey: ability.id)
+                    }
+                }
             case .failure(let error):
                 print(error.errorDescription)
             }
