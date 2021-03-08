@@ -33,8 +33,11 @@ enum AppAction {
     
     /// 切换 cell 展开状态
     case toggleListSelection(index: Int?)
+    case togglePanelPresenting(presenting: Bool)
     /// 技能开始加载
     case loadAbilities(pokemon: Pokemon)
     /// 技能加载结束
     case loadAbilitiesDone(result: Result<[AbilityViewModel], AppError>)
+    
+
 }

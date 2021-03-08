@@ -156,5 +156,11 @@ extension AppState {
         ) -> [AbilityViewModel]? {
             return pokemon.abilities.map{$0.ability.url.extractedID}.filter{$0 != nil}.map{ abilities?[$0!] }.filter{$0 != nil}.map{$0!}
         }
+        
+        struct SelectionState {
+            var panelPresented = false
+        }
+        var selectionState = SelectionState()
+        
     }
 }

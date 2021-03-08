@@ -125,7 +125,14 @@ extension Store {
                 appState.pokemonList.expandingIndex == index
                 ? nil
                 : index
-
+            appState.pokemonList.selectionState.panelPresented = appState.pokemonList.expandingIndex != nil
+            
+        case .togglePanelPresenting(presenting: let present):
+            appState.pokemonList.selectionState.panelPresented = present
+            if !present {
+                appState.pokemonList.expandingIndex = nil
+            }
+            
         case .loadAbilities(pokemon: let pokemon):
             if appState.pokemonList.loadingAbilitys {
                 break
