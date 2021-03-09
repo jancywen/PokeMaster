@@ -154,6 +154,12 @@ extension Store {
             case .failure(let error):
                 print(error.errorDescription)
             }
+            
+        case .showingAlert(showing: let show):
+            appState.pokemonList.showingAlert = show
+        /// 切换tab
+        case .exchangeTab(index: let index):
+            appState.mainTab.selection = index
         }
         
         return (appState, appCommand)

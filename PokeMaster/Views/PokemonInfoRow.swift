@@ -11,6 +11,9 @@ import SwiftUI
 
 struct PokemonInfoRow: View {
     
+    @EnvironmentObject var store: Store
+
+    
 //    let model = PokemonViewModel.sample(id: 1)
     let model: PokemonViewModel
     let expanded: Bool
@@ -44,7 +47,9 @@ struct PokemonInfoRow: View {
             
             HStack(spacing: expanded ? 20 : -30) {
                 Spacer()
-                Button(action: {print("Fav")}) {
+                Button(action: {
+                    store.dispatch(.showingAlert(showing: true))
+                }) {
                     Image(systemName: "star")
                         .modifier(ToolButtonModifier())
                 }

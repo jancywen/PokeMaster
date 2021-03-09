@@ -23,15 +23,18 @@ struct MainTab: View {
     
     
     var body: some View {
-        TabView {
+        TabView(selection: $store.appState.mainTab.selection) {
             PokemonRootView().tabItem {
                 Image(systemName: "list.bullet.below.rectangle")
                 Text("列表")
             }
+            .tag(AppState.MainTab.Index.list)
+            
             SettingRootView().tabItem {
                 Image(systemName: "gear")
                 Text("设置")
             }
+            .tag(AppState.MainTab.Index.setting)
         }
         .edgesIgnoringSafeArea(.top)
         .overlay(

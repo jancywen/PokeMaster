@@ -43,14 +43,23 @@ struct PokemonListView: View {
                         }
                     }
                 })
+            }.alert(isPresented: $store.appState.pokemonList.showingAlert) { () -> Alert in
+                Alert(
+                    title: Text("提示"),
+                    message: Text("需要账号"),
+                    primaryButton: .cancel(),
+                    secondaryButton: .default(Text("确定"),
+                                              action: {
+                                                store.dispatch(
+                                                    .togglePanelPresenting(presenting: false)
+                                                )
+                                                store.dispatch(
+                                                    .exchangeTab(index: .setting)
+                                                )
+                                              }
+                    )
+                )
             }
-//            .overlay(
-//                VStack{
-//                    Spacer()
-//                    PokemonInfoPanel(model: .sample(id: expandingIndex ?? 1))
-//                        
-//                }.edgesIgnoringSafeArea(.bottom)
-//            )
         } else {
             List(PokemonViewModel.all){ pokemon in
                 PokemonInfoRow(

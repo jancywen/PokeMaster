@@ -13,6 +13,8 @@ struct AppState {
     var settings = Settings()
     
     var pokemonList = PokemonList()
+    
+    var mainTab = MainTab()
 }
 
 extension AppState {
@@ -128,7 +130,10 @@ extension AppState {
         @UserDefaultsStorage<Bool>(initialValue: false, keypath: "showFavoriteOnly")
         var showFavoriteOnly
     }
-    
+}
+
+
+extension AppState {
     struct PokemonList {
         @FileStorage(directory: .documentDirectory, fileName: "pokemon.json")
         var pokemons: [Int: PokemonViewModel]?
@@ -162,5 +167,18 @@ extension AppState {
         }
         var selectionState = SelectionState()
         
+        var showingAlert = false
+        
+    }
+}
+
+
+extension AppState {
+    struct MainTab {
+        enum Index: Hashable {
+            case list, setting
+        }
+        
+        var selection: Index = .list
     }
 }

@@ -38,6 +38,9 @@ enum AppAction {
     case loadAbilities(pokemon: Pokemon)
     /// 技能加载结束
     case loadAbilitiesDone(result: Result<[AbilityViewModel], AppError>)
-    
+    /// 显示 alert
+    case showingAlert(showing: Bool)
 
+    /// 切换tab
+    case exchangeTab(index: AppState.MainTab.Index)
 }
