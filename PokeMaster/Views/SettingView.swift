@@ -27,6 +27,7 @@ struct SettingView: View {
             accountSection
             optionSection
             actionSection
+            exampleSection
         }
         .alert(item: settingBinding.loginError) { error in
             Alert(title: Text(error.localizedDescription))
@@ -107,6 +108,14 @@ struct SettingView: View {
             Button("清空缓存") {
                 self.store.dispatch(.clearCache)
             }.foregroundColor(.red)
+        }
+    }
+    
+    var exampleSection: some View {
+        Section {
+            Button("FlowRectangle") {
+                
+            }
         }
     }
     

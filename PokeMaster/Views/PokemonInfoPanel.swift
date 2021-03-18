@@ -38,7 +38,14 @@ struct PokemonInfoPanel: View {
             Header(model: model)
             pokemonDescription
             Divider()
-            AbilityList(model: model, abilityModels: abilities)
+            
+            HStack(spacing: 20) {
+                AbilityList(model: model, abilityModels: abilities)
+                RadarView(max: 120,
+                          values: model.pokemon.stats.map{$0.baseStat},
+                          color: model.color)
+                    .frame(width: 100, height: 100)
+            }
         }
         .padding(EdgeInsets(top: 12, leading: 30, bottom: 30, trailing: 30))
 //        .background(Color.white)
